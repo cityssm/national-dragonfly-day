@@ -1,0 +1,10 @@
+{
+  "name": "@cityssm/national-dragonfly-day",
+  "version": "1.0.0",
+  "description": "A simple 'swat the mosquito' game for the National Dragonfly Day door decorating contest.",
+  "type": "module",
+  "devDependencies": {
+    "eslint-config-cityssm": "^24.1.0",
+    "prettier-config-cityssm": "^1.0.0"
+  }
+}
