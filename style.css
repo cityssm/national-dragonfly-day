@@ -1,6 +1,8 @@
 html,
 a {
-  cursor: url(images/dragonfly.png) 45 45, auto !important;
+  cursor:
+    url(images/dragonfly.png) 45 45,
+    auto !important;
 }
 
 body {
@@ -28,7 +30,7 @@ body {
 }
 
 .display-3 {
-    font-family: "Impact", Arial, sans-serif;
+  font-family: 'Impact', Arial, sans-serif;
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: #000;
 }
@@ -100,6 +102,7 @@ body {
 @media (max-width: 768px) {
   .display-3 {
     font-size: 1.5rem;
+    -webkit-text-stroke-width: 1px;
   }
 
   #logoImage {
