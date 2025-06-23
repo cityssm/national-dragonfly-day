@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>National Dragonfly Day</title>
+
+    <link rel="stylesheet" href="lib/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <img id="logoImage" src="images/logo.png" alt="Game Over" />
+      <div class="game-over">
+        <div class="display-3 text-center">
+          Total Score<br />
+          <span id="final-score"></span>
+        </div>
+      </div>
+    </div>
+    <script>
+      var score = window.location.search;
+      score = score.replace("?", "");
+      document.getElementById("final-score").innerHTML = score;
+
+      window.setTimeout(function () {
+        window.location.href = "index.html";
+      }, 5000);
+    </script>
+  </body>
+</html>
