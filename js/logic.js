@@ -95,7 +95,7 @@
     if (chronometerElement === null) {
         throw new Error('Chronometer element not found');
     }
-    chronometerElement.textContent = Math.floor(time).toString();
+    chronometerElement.textContent = time.toString();
     const chronometerInterval = setInterval(function () {
         time--;
         if (time < 0) {
@@ -104,7 +104,7 @@
             window.location.href = 'gameOver.html?' + score;
         }
         else {
-            chronometerElement.textContent = Math.floor(time).toString();
+            chronometerElement.textContent = time.toString();
         }
     }, 1000);
 })();
