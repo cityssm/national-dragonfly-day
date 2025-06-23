@@ -91,6 +91,7 @@ body {
 @media (max-width: 1024px) {
   .display-3 {
     font-size: 2rem;
+    -webkit-text-stroke-width: 1px;
   }
 
   #logoImage {
