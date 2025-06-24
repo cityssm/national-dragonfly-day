@@ -34,7 +34,7 @@ body {
 }
 
 .display-3 {
-  font-family: 'Impact', Arial, sans-serif;
+  font-family: 'Impact', 'Arial Black', sans-serif;
   -webkit-text-stroke-width: 9px;
   -webkit-text-stroke-color: #000;
   paint-order: stroke fill;
