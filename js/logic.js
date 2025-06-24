@@ -1,10 +1,10 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable sonarjs/pseudo-random, unicorn/prefer-global-this */
+/* eslint-disable @typescript-eslint/no-unsafe-type-assertion, sonarjs/pseudo-random, unicorn/prefer-global-this */
 ;
 (() => {
     let remainingLives = 3;
     let score = 0;
-    const mosquitoLifeMillis = 950;
+    const mosquitoLifeMillis = 800;
     const pointsPerMosquito = 2;
     const eatEvent = 'mouseover';
     /*
@@ -17,14 +17,14 @@
      * Mosquito Logic
      */
     const currentScoreElement = document.querySelector('#current-score');
-    function randomMosquitoPosition() {
+    function createRandomMosquito() {
         let mosquitoElement = document.querySelector('#mosquito');
         // Remove the previous mosquito (if there's any...)
         if (mosquitoElement !== null) {
             mosquitoElement.remove();
             if (remainingLives > 0) {
-                document.getElementById('life' + remainingLives).src =
-                    'images/empty_heart.png';
+                ;
+                document.querySelector('#life' + remainingLives).src = 'images/empty_heart.png';
                 remainingLives--;
             }
             if (remainingLives <= 0) {
@@ -36,14 +36,12 @@
         const positionY = Math.floor(Math.random() * (height - margin * 3)) + margin;
         // Create the mosquito element
         mosquitoElement = document.createElement('img');
-        mosquitoElement.src = 'images/mosquito.png';
-        mosquitoElement.className =
-            randomMosquitoSize() + ' ' + randomMosquitoDirection();
-        mosquitoElement.style.left = positionX + 'px';
-        mosquitoElement.style.top = positionY + 'px';
-        mosquitoElement.style.position = 'absolute';
+        mosquitoElement.className = `animate__animated animate__shakeX ${randomMosquitoSize()} ${randomMosquitoDirection()}`;
         mosquitoElement.id = 'mosquito';
-        mosquitoElement.addEventListener(eatEvent, function () {
+        mosquitoElement.src = 'images/mosquito.png';
+        mosquitoElement.style.left = `${positionX}px`;
+        mosquitoElement.style.top = `${positionY}px`;
+        mosquitoElement.addEventListener(eatEvent, () => {
             mosquitoElement.remove();
             score += pointsPerMosquito;
             currentScoreElement.textContent = score.toString();
@@ -51,26 +49,19 @@
         document.body.append(mosquitoElement);
     }
     function randomMosquitoSize() {
-        const mosquitoSizeClass = Math.floor(Math.random() * 3);
-        switch (mosquitoSizeClass) {
-            case 0: {
-                return 'mosquito1';
-            }
-            case 1: {
-                return 'mosquito2';
-            }
-            default: {
-                return 'mosquito3';
-            }
-        }
+        const mosquitoSizeClass = Math.floor(Math.random() * 3) + 1;
+        return `mosquito${mosquitoSizeClass}`;
     }
     function randomMosquitoDirection() {
-        const mosquitoDirectionClass = Math.floor(Math.random() * 2);
-        return mosquitoDirectionClass === 0 ? 'direction_left' : 'direction_right';
+        return Math.random() > 0.5 ? 'direction_left' : 'direction_right';
     }
-    const createMosquitoInterval = setInterval(function () {
-        randomMosquitoPosition();
-    }, mosquitoLifeMillis);
+    function scheduleNextMosquito() {
+        window.setTimeout(function () {
+            createRandomMosquito();
+            scheduleNextMosquito();
+        }, mosquitoLifeMillis);
+    }
+    scheduleNextMosquito();
     /*
      * Timer
      */
@@ -80,11 +71,9 @@
         throw new Error('Chronometer element not found');
     }
     chronometerElement.textContent = time.toString();
-    const chronometerInterval = setInterval(function () {
+    window.setInterval(function () {
         time--;
         if (time < 0) {
-            clearInterval(chronometerInterval);
-            clearInterval(createMosquitoInterval);
             window.location.href = 'gameOver.html?' + score;
         }
         else {
