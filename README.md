@@ -12,6 +12,10 @@ Use the dragonfly to eat the mosquitoes!
 
 Mouse over the mosquitoes with the dragonfly's mouth to make them disappear.
 
+⚠️ Note that this game was built for a very specific application, being projected on a glass door from a Windows computer,
+and controlled by a mouse. Other configurations have not been tested, and may not work.
+For example, this game _does not support_ touchscreens!
+
 ## Credits
 
 Game adapted from [mosquito-game](https://github.com/farvic/mosquito-game).
