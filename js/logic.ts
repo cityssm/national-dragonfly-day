@@ -4,8 +4,8 @@
   let lives = 3
   let score = 0
 
-  const mosquitoLife = 1500
-  const multiply = 1
+  const mosquitoLife = 1000
+  const multiply = 2
   const eatEvent: 'click' | 'mouseover' = 'mouseover'
 
   /*
