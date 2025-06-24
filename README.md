@@ -17,8 +17,9 @@ Mouse over the mosquitoes with the dragonfly's mouth to make them disappear.
 Game adapted from [mosquito-game](https://github.com/farvic/mosquito-game).
 
 - [Bootstrap](https://getbootstrap.com/)
-- [Animate,css](https://animate.style/)
+- [Animate.css](https://animate.style/)
 - [Dragonfly cursor](https://pixabay.com/illustrations/dragonfly-damselfly-insect-cartoon-9101902/)
+- [Mosquito image](https://pixabay.com/vectors/flies-mosquito-spider-insect-161351/)
 
 ## Past Door Competition Entries
 
