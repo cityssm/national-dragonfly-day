@@ -6,6 +6,7 @@
     let score = 0;
     const mosquitoLife = 1500;
     const multiply = 1;
+    const eatEvent = 'mouseover';
     /*
      * Game screen size
      */
@@ -57,12 +58,12 @@
         mosquito.style.top = positionY + 'px';
         mosquito.style.position = 'absolute';
         mosquito.id = 'mosquito';
-        mosquito.addEventListener('click', function () {
-            this.remove();
+        mosquito.addEventListener(eatEvent, function () {
+            mosquito.remove();
             score += multiply;
-            document.querySelector('#current-score').innerHTML = score;
+            document.querySelector('#current-score').textContent = score.toString();
         });
-        document.body.appendChild(mosquito);
+        document.body.append(mosquito);
     }
     function randomMosquitoSize() {
         const mosquitoSizeClass = Math.floor(Math.random() * 3);
@@ -80,9 +81,7 @@
     }
     function randomMosquitoDirection() {
         const mosquitoDirectionClass = Math.floor(Math.random() * 2);
-        return mosquitoDirectionClass === 0
-            ? 'direction_left'
-            : 'direction_right';
+        return mosquitoDirectionClass === 0 ? 'direction_left' : 'direction_right';
     }
     const createMosquitoInterval = setInterval(function () {
         randomMosquitoPosition();

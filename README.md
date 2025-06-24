@@ -10,7 +10,7 @@ A simple "swat the mosquito" game for the 2025 National Dragonfly Day door decor
 
 Use the dragonfly to eat the mosquitoes!
 
-Click the mosquitoes with the dragonfly's mouth to make them disappear.
+Mouse over the mosquitoes with the dragonfly's mouth to make them disappear.
 
 ## Credits
 

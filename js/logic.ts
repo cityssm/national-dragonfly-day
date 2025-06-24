@@ -6,6 +6,7 @@
 
   const mosquitoLife = 1500
   const multiply = 1
+  const eatEvent: 'click' | 'mouseover' = 'mouseover'
 
   /*
    * Game screen size
@@ -69,13 +70,13 @@
     mosquito.style.position = 'absolute'
     mosquito.id = 'mosquito'
 
-    mosquito.addEventListener('click', function () {
-      this.remove()
+    mosquito.addEventListener(eatEvent, function () {
+      mosquito.remove()
       score += multiply
-      document.querySelector('#current-score').innerHTML = score
+      document.querySelector('#current-score').textContent = score.toString()
     })
 
-    document.body.appendChild(mosquito)
+    document.body.append(mosquito)
   }
 
   function randomMosquitoSize(): string {
@@ -97,9 +98,7 @@
   function randomMosquitoDirection(): string {
     const mosquitoDirectionClass = Math.floor(Math.random() * 2)
 
-    return mosquitoDirectionClass === 0
-      ? 'direction_left'
-      : 'direction_right'
+    return mosquitoDirectionClass === 0 ? 'direction_left' : 'direction_right'
   }
 
   const createMosquitoInterval = setInterval(function () {
