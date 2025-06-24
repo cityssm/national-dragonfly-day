@@ -2,68 +2,53 @@
 /* eslint-disable sonarjs/pseudo-random, unicorn/prefer-global-this */
 ;
 (() => {
-    let lives = 3;
+    let remainingLives = 3;
     let score = 0;
-    const mosquitoLife = 1000;
-    const multiply = 2;
+    const mosquitoLifeMillis = 950;
+    const pointsPerMosquito = 2;
     const eatEvent = 'mouseover';
     /*
      * Game screen size
      */
     const margin = 100;
-    let width = 0;
-    let height = 0;
-    function adjustGameScreenSize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-    }
-    adjustGameScreenSize();
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     /*
      * Mosquito Logic
      */
+    const currentScoreElement = document.querySelector('#current-score');
     function randomMosquitoPosition() {
-        var _a;
+        let mosquitoElement = document.querySelector('#mosquito');
         // Remove the previous mosquito (if there's any...)
-        if (document.querySelector('#mosquito') !== null) {
-            (_a = document.querySelector('#mosquito')) === null || _a === void 0 ? void 0 : _a.remove();
-            if (lives > 0) {
-                document.getElementById('life' + lives).src = 'images/empty_heart.png';
-                lives--;
+        if (mosquitoElement !== null) {
+            mosquitoElement.remove();
+            if (remainingLives > 0) {
+                document.getElementById('life' + remainingLives).src =
+                    'images/empty_heart.png';
+                remainingLives--;
             }
-            if (lives <= 0) {
+            if (remainingLives <= 0) {
                 window.location.href = 'gameOver.html?' + score;
             }
         }
-        const maxWidth = width / 2 + 640;
-        let minWidth = width / 2 - 640;
-        let positionX = 0;
-        if (width >= 1024) {
-            positionX =
-                Math.floor(Math.random() * (maxWidth - minWidth + 1)) +
-                    minWidth -
-                    margin;
-        }
-        else {
-            positionX = Math.floor(Math.random() * width) - margin;
-            minWidth = 0;
-        }
-        let positionY = Math.floor(Math.random() * height) - margin;
-        positionX = Math.max(positionX, minWidth, margin);
-        positionY = Math.max(positionY, margin);
-        // Create the html element
-        const mosquito = document.createElement('img');
-        mosquito.src = 'images/mosquito.png';
-        mosquito.className = randomMosquitoSize() + ' ' + randomMosquitoDirection();
-        mosquito.style.left = positionX + 'px';
-        mosquito.style.top = positionY + 'px';
-        mosquito.style.position = 'absolute';
-        mosquito.id = 'mosquito';
-        mosquito.addEventListener(eatEvent, function () {
-            mosquito.remove();
-            score += multiply;
-            document.querySelector('#current-score').textContent = score.toString();
+        // Calculate the position of the new mosquito
+        const positionX = Math.floor(Math.random() * (width - margin * 3)) + margin;
+        const positionY = Math.floor(Math.random() * (height - margin * 3)) + margin;
+        // Create the mosquito element
+        mosquitoElement = document.createElement('img');
+        mosquitoElement.src = 'images/mosquito.png';
+        mosquitoElement.className =
+            randomMosquitoSize() + ' ' + randomMosquitoDirection();
+        mosquitoElement.style.left = positionX + 'px';
+        mosquitoElement.style.top = positionY + 'px';
+        mosquitoElement.style.position = 'absolute';
+        mosquitoElement.id = 'mosquito';
+        mosquitoElement.addEventListener(eatEvent, function () {
+            mosquitoElement.remove();
+            score += pointsPerMosquito;
+            currentScoreElement.textContent = score.toString();
         });
-        document.body.append(mosquito);
+        document.body.append(mosquitoElement);
     }
     function randomMosquitoSize() {
         const mosquitoSizeClass = Math.floor(Math.random() * 3);
@@ -85,7 +70,7 @@
     }
     const createMosquitoInterval = setInterval(function () {
         randomMosquitoPosition();
-    }, mosquitoLife);
+    }, mosquitoLifeMillis);
     /*
      * Timer
      */
