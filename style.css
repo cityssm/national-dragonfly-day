@@ -35,9 +35,9 @@ body {
 
 .display-3 {
   font-family: 'Impact', Arial, sans-serif;
-  font-weight: bold;
-  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-width: 9px;
   -webkit-text-stroke-color: #000;
+  paint-order: stroke fill;
 }
 
 /** Different mosquito sizes and directions */
