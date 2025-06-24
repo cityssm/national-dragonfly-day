@@ -1,4 +1,4 @@
-# National Dragonfly Day - Defend Clergue Park
+# National Dragonfly Day - Feed the Dragonflies
 
 ![Screenshot](images/screenshot.png)
 

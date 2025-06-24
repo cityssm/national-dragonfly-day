@@ -16,6 +16,10 @@ body {
   overflow: hidden;
 }
 
+#gameBody {
+  background-image: url(images/clerguePark2.jpg);
+}
+
 .container {
   display: flex;
   flex-direction: column;
