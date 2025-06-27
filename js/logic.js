@@ -4,7 +4,7 @@
 (() => {
     let remainingLives = 3;
     let score = 0;
-    const mosquitoLifeMillis = 900;
+    const mosquitoLifeMillis = 1100;
     const pointsPerMosquito = 2;
     const eatEvent = 'mouseover';
     /*
