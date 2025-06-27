@@ -25,6 +25,9 @@ Game adapted from [mosquito-game](https://github.com/farvic/mosquito-game).
 - [Dragonfly cursor](https://pixabay.com/illustrations/dragonfly-damselfly-insect-cartoon-9101902/)
 - [Mosquito image](https://pixabay.com/vectors/flies-mosquito-spider-insect-161351/)
 
+Also thanks to open source tools [OBS Studio](https://obsproject.com/) for assistance with positioning the game on the door,
+and [Display-Lock](https://github.com/Stateford/Display-Lock) for help locking the cursor inside the game window.
+
 ## Past Door Competition Entries
 
 [National Bee Day](https://github.com/cityssm/national-bee-day)<br />
