@@ -27,5 +27,10 @@
         </div>
       </div>
     </a>
+    <script>
+      if (window.self !== window.top) {
+        document.querySelector('.display-3').innerHTML = 'Top Score:<br />Chase - 104<br />Click to play!';
+      }
+    </script>
   </body>
 </html>
